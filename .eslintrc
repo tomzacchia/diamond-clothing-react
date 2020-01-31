@@ -25,6 +25,7 @@
       {
         "argsIgnorePattern": "req|res|next|val"
       }
-    ]
+    ],
+    "react/prop-types": [0]
   }
 }
