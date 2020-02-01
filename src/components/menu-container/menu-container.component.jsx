@@ -47,9 +47,11 @@ class MenuContainer extends React.Component {
   render() {
     const { menuItems } = this.state;
 
-    const menuItemElements = menuItems.map(({ title, id, imageUrl, size }) => {
+    const menuItemElements = menuItems.map(menuItem => {
+      const { id, ...remainingMenuItemProps } = menuItem;
+
       return (
-        <MenuItem title={title} key={id} imageUrl={imageUrl} size={size} />
+        <MenuItem key={id} remainingMenuItemProps={remainingMenuItemProps} />
       );
     });
 
