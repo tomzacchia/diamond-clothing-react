@@ -29,6 +29,4 @@ const MenuItem = ({ history, match, remainingMenuItemProps }) => {
   );
 };
 
-// withRouter takes a component and modifies it to give
-// access to history, location, match via props
 export default withRouter(MenuItem);
