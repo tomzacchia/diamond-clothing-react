@@ -3,8 +3,15 @@ import { Link } from 'react-router-dom';
 import './header.styles.scss';
 
 import { ReactComponent as Logo } from '../../assets/crown.svg';
+import { auth } from '../../firebase/firebase.utils';
 
-function Header() {
+const Header = ({ currentUser }) => {
+  let signOutElement = <Link> SIGN OUT </Link>;
+
+  if (!currentUser) {
+    signOutElement = <div />;
+  }
+
   return (
     <div className="header">
       <Link className="logo-container" to="/">
@@ -17,9 +24,11 @@ function Header() {
         <Link className="option" to="/contact">
           CONTACT
         </Link>
+
+        {signOutElement}
       </div>
     </div>
   );
-}
+};
 
 export default Header;
