@@ -6,10 +6,18 @@ import { ReactComponent as Logo } from '../../assets/crown.svg';
 import { auth } from '../../firebase/firebase.utils';
 
 const Header = ({ currentUser }) => {
-  let signOutElement = <Link> SIGN OUT </Link>;
+  let signInAndOutElement = (
+    <Link className="option" to="/authentication">
+      SIGN IN
+    </Link>
+  );
 
-  if (!currentUser) {
-    signOutElement = <div />;
+  if (currentUser) {
+    signInAndOutElement = (
+      <div className="option" onClick={() => auth.signOut()}>
+        SIGN OUT
+      </div>
+    );
   }
 
   return (
@@ -25,7 +33,7 @@ const Header = ({ currentUser }) => {
           CONTACT
         </Link>
 
-        {signOutElement}
+        {signInAndOutElement}
       </div>
     </div>
   );
