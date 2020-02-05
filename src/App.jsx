@@ -21,11 +21,30 @@ class App extends React.Component {
   }
 
   componentDidMount() {
-    this.unsubscribeFromAuth = auth.onAuthStateChanged(async user => {
-      // this.setState({ currentUser: user });
-      createUserProfileDocument(user);
-      console.log(user);
-    });
+    // check if user is signed in by O-Auth, if they are
+    // set currentUser in state
+    this.unsubscribeFromAuth = auth.onAuthStateChanged(
+      async authenticatedUser => {
+        if (!authenticatedUser) {
+          this.setState({ currentUser: null });
+          return;
+        }
+
+        const userRef = await createUserProfileDocument(authenticatedUser);
+
+        // get the current realtime data for the reference
+        userRef.onSnapshot(snapshot => {
+          const { id } = snapshot;
+          const snapshotData = snapshot.data();
+          this.setState({
+            currentUser: {
+              id,
+              ...snapshotData
+            }
+          });
+        });
+      }
+    );
   }
 
   componentWillUnmount() {

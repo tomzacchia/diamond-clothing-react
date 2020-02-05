@@ -14,6 +14,8 @@ const config = {
   measurementId: 'G-BXVWX31NN9'
 };
 
+// If the user is authenticated we'll return a reference to the document
+// else create a new user in our database
 export const createUserProfileDocument = async (
   authenticatedUser,
   additionalData
