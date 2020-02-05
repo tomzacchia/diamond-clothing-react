@@ -1,6 +1,7 @@
 import React from 'react';
 import ReactDOM from 'react-dom';
 import { BrowserRouter } from 'react-router-dom';
+import { Provider } from 'react-redux';
 
 import './index.css';
 import App from './App';
@@ -8,9 +9,12 @@ import * as serviceWorker from './serviceWorker';
 
 // eslint-disable-next-line no-undef
 ReactDOM.render(
-  <BrowserRouter>
-    <App />
-  </BrowserRouter>,
+  // Provider wraps our entire application to give access to Store app wide
+  <Provider>
+    <BrowserRouter>
+      <App />
+    </BrowserRouter>
+  </Provider>,
   document.getElementById('root')
 );
 
