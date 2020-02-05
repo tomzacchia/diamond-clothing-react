@@ -29,6 +29,7 @@ class SignIn extends React.Component {
 
   trySigningInUser = async (email, password) => {
     try {
+      // event caught by auth.onAuthStateChanged
       await auth.signInWithEmailAndPassword(email, password);
 
       this.reinitializeState();
