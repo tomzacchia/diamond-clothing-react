@@ -47,6 +47,7 @@ class App extends React.Component {
     userRef.onSnapshot(snapshot => {
       const { id } = snapshot;
       const snapshotData = snapshot.data();
+
       this.setState({
         currentUser: {
           id,

@@ -17,15 +17,22 @@ class SignIn extends React.Component {
 
   handleSubmit = async event => {
     event.preventDefault();
-    const reinitializeState = { email: '', password: '' };
-
     const { email, password } = this.state;
 
+    this.trySigningInUser(email, password);
+  };
+
+  reinitializeState = async () => {
+    const reinitializeState = { email: '', password: '' };
+    await this.setState(reinitializeState);
+  };
+
+  trySigningInUser = async (email, password) => {
     try {
       // When a user signs-in our onAuthStateChanged subscription will catch it
       await auth.signInWithEmailAndPassword(email, password);
 
-      await this.setState(reinitializeState);
+      this.reinitializeState();
     } catch (error) {
       console.log(error);
     }
