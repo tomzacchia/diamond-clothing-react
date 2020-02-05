@@ -29,7 +29,6 @@ class SignIn extends React.Component {
 
   trySigningInUser = async (email, password) => {
     try {
-      // When a user signs-in our onAuthStateChanged subscription will catch it
       await auth.signInWithEmailAndPassword(email, password);
 
       this.reinitializeState();

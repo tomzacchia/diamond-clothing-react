@@ -21,8 +21,6 @@ class App extends React.Component {
   }
 
   componentDidMount() {
-    // check if user is signed in by O-Auth, if they are
-    // set currentUser in state
     this.unsubscribeFromAuth = auth.onAuthStateChanged(
       async authenticatedUser => {
         if (!authenticatedUser) {
@@ -32,7 +30,6 @@ class App extends React.Component {
 
         const userRef = await createUserProfileDocument(authenticatedUser);
 
-        // get the current realtime data for the reference
         this.updateCurrentUserInState(userRef);
       }
     );
