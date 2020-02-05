@@ -33,16 +33,7 @@ class App extends React.Component {
         const userRef = await createUserProfileDocument(authenticatedUser);
 
         // get the current realtime data for the reference
-        userRef.onSnapshot(snapshot => {
-          const { id } = snapshot;
-          const snapshotData = snapshot.data();
-          this.setState({
-            currentUser: {
-              id,
-              ...snapshotData
-            }
-          });
-        });
+        this.updateCurrentUserInState(userRef);
       }
     );
   }
@@ -51,6 +42,19 @@ class App extends React.Component {
     // calling unsubscribeFromAuth will unsubscribe from updates from auth server
     this.unsubscribeFromAuth();
   }
+
+  updateCurrentUserInState = userRef => {
+    userRef.onSnapshot(snapshot => {
+      const { id } = snapshot;
+      const snapshotData = snapshot.data();
+      this.setState({
+        currentUser: {
+          id,
+          ...snapshotData
+        }
+      });
+    });
+  };
 
   render() {
     const { currentUser } = this.state;
