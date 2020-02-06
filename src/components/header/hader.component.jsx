@@ -43,8 +43,12 @@ const Header = ({ currentUser }) => {
 // here state refers the rootRooter
 const mapStateToProps = state => {
   return {
-    currentUser: state.currentUser
+    currentUser: state.user.currentUser
   };
 };
 
+/*
+  connect(mapStateToProps, mapDispatchToProps) returns a function
+  we pass in our component into the HOC
+*/
 export default connect(mapStateToProps)(Header);
