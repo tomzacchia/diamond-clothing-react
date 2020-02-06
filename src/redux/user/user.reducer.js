@@ -1,3 +1,5 @@
+import { userActions } from './user.actions';
+
 const INITIAL_STATE = {
   currentUser: null
 };
@@ -7,13 +9,13 @@ const INITIAL_STATE = {
 // therefore the default case is important
 const userReducer = (state = INITIAL_STATE, action) => {
   switch (action.type) {
-    case 'SET_CURRENT_USER':
+    case userActions.SET_CURRENT_USER:
       return {
         ...state,
         currentUser: action.payload
       };
 
-    case 'SIGN_OUT_USER':
+    case userActions.SIGN_OUT_USER:
       return {
         ...INITIAL_STATE
       };
