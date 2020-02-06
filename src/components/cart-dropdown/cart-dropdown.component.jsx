@@ -6,7 +6,7 @@ import CustomButton from '../custom-button/custom-button.component';
 const CartDropdown = () => {
   return (
     <div className="cart-dropdown">
-      <div className="cart-items"></div>
+      <div className="cart-items"> TEST </div>
 
       <CustomButton>GO TO CHECKOUT</CustomButton>
     </div>
