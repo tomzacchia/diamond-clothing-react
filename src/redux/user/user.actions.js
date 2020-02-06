@@ -1,17 +1,14 @@
-export const userActions = {
-  SET_CURRENT_USER: 'SET_CURRENT_USER',
-  SIGN_OUT_USER: 'SIGN_OUT_USER'
-};
+import userActionsTypes from './user.types';
 
 export const setCurrentUser = user => {
   return {
-    type: userActions.SET_CURRENT_USER,
+    type: userActionsTypes.SET_CURRENT_USER,
     payload: user
   };
 };
 
 export const signUserOut = () => {
   return {
-    type: userActions.SIGN_OUT_USER
+    type: userActionsTypes.SIGN_OUT_USER
   };
 };
