@@ -9,7 +9,7 @@ import { auth } from '../../firebase/firebase.utils';
 import CartIcon from '../cart-icon/cart-icon.component';
 import CartDropdown from '../cart-dropdown/cart-dropdown.component';
 
-const Header = ({ currentUser }) => {
+const Header = ({ currentUser, displayCartDropdown }) => {
   let signInAndOutElement = (
     <Link className="option" to="/authentication">
       SIGN IN
@@ -22,6 +22,12 @@ const Header = ({ currentUser }) => {
         SIGN OUT
       </div>
     );
+  }
+
+  let cartDropdownElement = null;
+
+  if (displayCartDropdown) {
+    cartDropdownElement = <CartDropdown />;
   }
 
   return (
@@ -42,15 +48,19 @@ const Header = ({ currentUser }) => {
 
         <CartIcon />
       </div>
-      <CartDropdown />
+      {cartDropdownElement}
     </div>
   );
 };
 
 // here state refers the rootRooter
-const mapStateToProps = state => {
+const mapStateToProps = ({
+  user: { currentUser },
+  cart: { displayCartDropdown }
+}) => {
   return {
-    currentUser: state.user.currentUser
+    currentUser,
+    displayCartDropdown
   };
 };
 
