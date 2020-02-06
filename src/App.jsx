@@ -9,22 +9,22 @@ import HomePage from './pages/home-page/home-page.component';
 import ShopPage from './pages/shop-page/shop.component';
 import Header from './components/header/hader.component';
 import Authentication from './pages/authentication/authentication.component';
-import { setCurrentUser } from './redux/user/user.actions';
+import { setCurrentUser as setCurrentUserAction } from './redux/user/user.actions';
 
 class App extends React.Component {
   unsubscribeFromAuth = null;
 
   constructor(props) {
     super(props);
-    const { setCurrentUserAction } = this.props;
-    this.setCurrentUserAction = setCurrentUserAction;
+    const { setCurrentUser } = this.props;
+    this.setCurrentUser = setCurrentUser;
   }
 
   componentDidMount() {
     this.unsubscribeFromAuth = auth.onAuthStateChanged(
       async authenticatedUser => {
         if (!authenticatedUser) {
-          this.setCurrentUserAction(null);
+          this.setCurrentUser(null);
           return;
         }
 
@@ -44,7 +44,7 @@ class App extends React.Component {
       const { id } = snapshot;
       const snapshotData = snapshot.data();
 
-      this.setCurrentUserAction({
+      this.setCurrentUser({
         id,
         ...snapshotData
       });
@@ -82,7 +82,7 @@ const mapStateToProps = ({ user }) => {
 
 const mapDispatchToProps = dispatch => {
   return {
-    setCurrentUserAction: user => dispatch(setCurrentUser(user))
+    setCurrentUser: user => dispatch(setCurrentUserAction(user))
   };
 };
 
