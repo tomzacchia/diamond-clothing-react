@@ -4,7 +4,7 @@ import './custom-button.styles.scss';
 
 const CustomButton = ({
   type,
-  handleClick,
+  onClick,
   children,
   isGoogleSignIn,
   inverted
@@ -16,7 +16,7 @@ const CustomButton = ({
   if (inverted) buttonClassName += ' inverted';
 
   return (
-    <button className={buttonClassName} type={type} onClick={handleClick}>
+    <button className={buttonClassName} type={type} onClick={onClick}>
       {children}
     </button>
   );
