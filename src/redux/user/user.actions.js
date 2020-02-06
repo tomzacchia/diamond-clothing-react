@@ -3,7 +3,7 @@ export const userActions = {
   SIGN_OUT_USER: 'SIGN_OUT_USER'
 };
 
-export const SetCurrentUser = user => {
+export const setCurrentUser = user => {
   return {
     type: userActions.SET_CURRENT_USER,
     payload: user
