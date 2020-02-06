@@ -6,11 +6,11 @@ import { connect } from 'react-redux';
 import { ReactComponent as ShopIcon } from '../../assets/shopping-bag.svg';
 import { toggleCartDropdown } from '../../redux/cart/cart.actions';
 
-const CartIcon = ({ toggleCartDropdown, itemCount }) => {
+const CartIcon = ({ toggleCartDropdown, itemsCount }) => {
   return (
     <div className="cart-icon" onClick={toggleCartDropdown}>
       <ShopIcon className="shop-icon" />
-      <span className="item-count">{itemCount}</span>
+      <span className="item-count">{itemsCount}</span>
     </div>
   );
 };
@@ -28,7 +28,10 @@ const mapDispatchToProps = dispatch => ({
 const mapStateToProps = ({ cart: { cartItems } }) => ({
   // example of redux selector, we are manipulating data to get a new
   // custom property
-  itemCount: cartItems.reduce((total, cartItem) => total + cartItem.quantity, 0)
+  itemsCount: cartItems.reduce(
+    (total, cartItem) => total + cartItem.quantity,
+    0
+  )
 });
 
 export default connect(mapStateToProps, mapDispatchToProps)(CartIcon);
