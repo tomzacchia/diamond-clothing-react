@@ -6,6 +6,9 @@ import './header.styles.scss';
 import { ReactComponent as Logo } from '../../assets/crown.svg';
 import { auth } from '../../firebase/firebase.utils';
 
+import CartIcon from '../cart-icon/cart-icon.component';
+import CartDropdown from '../cart-dropdown/cart-dropdown.component';
+
 const Header = ({ currentUser }) => {
   let signInAndOutElement = (
     <Link className="option" to="/authentication">
@@ -30,12 +33,16 @@ const Header = ({ currentUser }) => {
         <Link className="option" to="/shop">
           SHOP
         </Link>
+
         <Link className="option" to="/contact">
           CONTACT
         </Link>
 
         {signInAndOutElement}
+
+        <CartIcon />
       </div>
+      <CartDropdown />
     </div>
   );
 };
