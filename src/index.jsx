@@ -1,16 +1,21 @@
 import React from 'react';
 import ReactDOM from 'react-dom';
 import { BrowserRouter } from 'react-router-dom';
+import { Provider } from 'react-redux';
 
 import './index.css';
 import App from './App';
 import * as serviceWorker from './serviceWorker';
+import store from './redux/store';
 
 // eslint-disable-next-line no-undef
 ReactDOM.render(
-  <BrowserRouter>
-    <App />
-  </BrowserRouter>,
+  // Provider wraps our entire application to give access to Store app wide
+  <Provider store={store}>
+    <BrowserRouter>
+      <App />
+    </BrowserRouter>
+  </Provider>,
   document.getElementById('root')
 );
 

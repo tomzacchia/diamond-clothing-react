@@ -7,10 +7,7 @@ const CollectionPreview = ({ title, previewItems }) => {
   const filterPreviewItems = previewItems.filter((item, index) => index < 4);
 
   const fitleredPreviewItemsElements = filterPreviewItems.map(previewItem => {
-    const { id, name, imageUrl, price } = previewItem;
-    return (
-      <CollectionItem key={id} name={name} imageUrl={imageUrl} price={price} />
-    );
+    return <CollectionItem key={previewItem.id} previewItem={previewItem} />;
   });
 
   return (
