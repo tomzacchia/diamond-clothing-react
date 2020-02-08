@@ -5,7 +5,6 @@ import rootReducer from './root-reducer';
 
 const middlewares = [logger];
 
-// pass middleware arrays into applyMiddlewares
 const store = createStore(
   rootReducer,
   applyMiddleware(...middlewares) + window.__REDUX_DEVTOOLS_EXTENSION__ &&

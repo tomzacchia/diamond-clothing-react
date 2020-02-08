@@ -58,15 +58,9 @@ const Header = ({ currentUser, displayCartDropdown }) => {
   );
 };
 
-// here state refers the rootRooter
-// createStructuredSelector will receive state from Store
 const mapStateToProps = createStructuredSelector({
   currentUser: selectCurrentUser,
   displayCartDropdown: selectDisplayCartDropdown
 });
 
-/*
-  connect(mapStateToProps, mapDispatchToProps) returns a function
-  we pass in our component into the HOC
-*/
 export default connect(mapStateToProps)(Header);

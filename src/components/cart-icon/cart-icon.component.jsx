@@ -20,15 +20,7 @@ const mapDispatchToProps = dispatch => ({
   toggleCartDropdown: () => dispatch(toggleCartDropdown())
 });
 
-/* 
-  mapStateToProps is called regardless if the property we destructured
-  changed or not, i.e toggleCartDropdown changes but mapStateToProps is executed
-  regardless because the new Store state is a new object when compared to 
-  the old Store state
-*/
 const mapStateToProps = state => ({
-  // example of redux selector, we are manipulating data to get a new
-  // custom property
   itemsCount: selectCartItemsCount(state)
 });
 
