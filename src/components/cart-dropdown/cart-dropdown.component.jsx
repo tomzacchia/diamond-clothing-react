@@ -7,8 +7,9 @@ import { withRouter } from 'react-router-dom';
 import CustomButton from '../custom-button/custom-button.component';
 import CartItem from '../cart-item/cart-item.component';
 import { selectCartItems } from '../../redux/cart/cart.selectors';
+import { toggleCartDropdown } from '../../redux/cart/cart.actions';
 
-const CartDropdown = ({ cartItems, history }) => {
+const CartDropdown = ({ cartItems, history, dispatch }) => {
   let cartItemElements = (
     <span className="empty-message"> Your cart is empty</span>
   );
@@ -21,6 +22,7 @@ const CartDropdown = ({ cartItems, history }) => {
 
   const handleCheckoutClick = () => {
     history.push('/checkout');
+    dispatch(toggleCartDropdown());
   };
 
   return (
@@ -36,9 +38,4 @@ const mapStateToProps = createStructuredSelector({
   cartItems: selectCartItems
 });
 
-/*
-  The order of wrapping matters becuase withRouter passes location, history, match
-  props to component. We want the result of connect()() to be passed
-  into withRouter
-*/
 export default withRouter(connect(mapStateToProps)(CartDropdown));
