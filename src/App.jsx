@@ -6,12 +6,14 @@ import { connect } from 'react-redux';
 import { createStructuredSelector } from 'reselect';
 import { auth, createUserProfileDocument } from './firebase/firebase.utils';
 
+import { setCurrentUser as setCurrentUserAction } from './redux/user/user.actions';
+import selectCurrentUser from './redux/user/user.selector';
+
 import HomePage from './pages/home-page/home-page.component';
 import ShopPage from './pages/shop-page/shop.component';
 import Header from './components/header/hader.component';
 import Authentication from './pages/authentication/authentication.component';
-import { setCurrentUser as setCurrentUserAction } from './redux/user/user.actions';
-import selectCurrentUser from './redux/user/user.selector';
+import Checkout from './components/checkout/checkout.component';
 
 class App extends React.Component {
   unsubscribeFromAuth = null;
@@ -70,6 +72,7 @@ class App extends React.Component {
           <Route exact path="/" component={HomePage} />
           <Route path="/shop" component={ShopPage} />
           <Route exact path="/authentication" render={redirectUser} />
+          <Route exact patch="/checkout" component={Checkout} />
         </Switch>
       </div>
     );
