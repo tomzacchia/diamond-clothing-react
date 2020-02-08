@@ -4,9 +4,6 @@ const INITIAL_STATE = {
   currentUser: null
 };
 
-// state gets passed in by global Store
-// every reducer receives every single action dispatched
-// therefore the default case is important
 const userReducer = (state = INITIAL_STATE, action) => {
   switch (action.type) {
     case userActionsTypes.SET_CURRENT_USER:
