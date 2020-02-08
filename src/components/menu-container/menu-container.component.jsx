@@ -4,7 +4,7 @@ import './menu-container.styles.scss';
 import { connect } from 'react-redux';
 
 import MenuItem from '../menu-item/menu-item.component';
-import selectMenuItems from '../../redux/menu/menu.selector';
+import { selectMenuItems } from '../../redux/menu/menu.selector';
 
 const MenuContainer = ({ menuItems }) => {
   const menuItemElements = menuItems.map(menuItem => {
