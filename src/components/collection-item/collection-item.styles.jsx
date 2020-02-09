@@ -8,7 +8,7 @@ export const CollectionItemImage = styled.div`
   margin-bottom: 5px;
 `;
 
-export const ModifiedCustomButton = styled.div`
+export const CustomButtonContainer = styled.div`
   opacity: 0.7;
   position: absolute;
   top: 255px;

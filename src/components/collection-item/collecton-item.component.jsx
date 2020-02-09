@@ -17,11 +17,11 @@ const CollectionItem = ({ previewItem, addCartItem }) => {
         <S.CollectionItemPrice>{price}</S.CollectionItemPrice>
       </S.CollectionItemFooter>
 
-      <S.ModifiedCustomButton>
+      <S.CustomButtonContainer>
         <CustomButton inverted onClick={() => addCartItem(previewItem)}>
           Add to cart
         </CustomButton>
-      </S.ModifiedCustomButton>
+      </S.CustomButtonContainer>
     </S.CollectionItem>
   );
 };
