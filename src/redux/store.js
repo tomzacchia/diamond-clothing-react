@@ -8,8 +8,9 @@ const middlewares = [logger];
 
 export const store = createStore(
   rootReducer,
-  applyMiddleware(...middlewares) + window.__REDUX_DEVTOOLS_EXTENSION__ &&
-    window.__REDUX_DEVTOOLS_EXTENSION__()
+  applyMiddleware(...middlewares) +
+    (window.__REDUX_DEVTOOLS_EXTENSION__ || null) &&
+    (window.__REDUX_DEVTOOLS_EXTENSION__() || null)
 );
 
 // create persisted version of our store
