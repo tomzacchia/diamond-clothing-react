@@ -1,10 +1,8 @@
 import React from 'react';
-import { Link } from 'react-router-dom';
+
 import { connect } from 'react-redux';
 import { createStructuredSelector } from 'reselect';
-import './header.styles.scss';
 
-import { ReactComponent as Logo } from '../../assets/crown.svg';
 import { auth } from '../../firebase/firebase.utils';
 
 import CartIcon from '../cart-icon/cart-icon.component';
@@ -12,49 +10,50 @@ import CartDropdown from '../cart-dropdown/cart-dropdown.component';
 import selectCurrentUser from '../../redux/user/user.selector';
 import { selectDisplayCartDropdown } from '../../redux/cart/cart.selectors';
 
+import {
+  HeaderContainer,
+  LogoContainer,
+  OptionsContainer,
+  OptionLink,
+  OptionDiv,
+  SvgLogo
+} from './header.styles';
+
 const Header = ({ currentUser, displayCartDropdown }) => {
-  let signInAndOutElement = (
-    <Link className="option" to="/authentication">
-      SIGN IN
-    </Link>
+  let signInAndOutMarkup = (
+    <OptionLink to="/authentication">SIGN IN</OptionLink>
   );
 
   if (currentUser) {
-    signInAndOutElement = (
-      <div className="option" onClick={() => auth.signOut()}>
-        SIGN OUT
-      </div>
+    signInAndOutMarkup = (
+      <OptionDiv onClick={() => auth.signOut()}>SIGN OUT</OptionDiv>
     );
   }
 
-  let cartDropdownElement = null;
+  let cartDropdownMarkup = null;
 
   if (displayCartDropdown) {
-    cartDropdownElement = <CartDropdown />;
+    cartDropdownMarkup = <CartDropdown />;
   }
 
   return (
-    <div className="header">
-      <Link className="logo-container" to="/">
-        <Logo className="logo" />
-      </Link>
+    <HeaderContainer>
+      <LogoContainer to="/">
+        <SvgLogo />
+      </LogoContainer>
 
-      <div className="options">
-        <Link className="option" to="/shop">
-          SHOP
-        </Link>
+      <OptionsContainer>
+        <OptionLink to="/shop">SHOP</OptionLink>
 
-        <Link className="option" to="/contact">
-          CONTACT
-        </Link>
+        <OptionLink to="/contact">CONTACT</OptionLink>
 
-        {signInAndOutElement}
+        {signInAndOutMarkup}
 
         <CartIcon />
-      </div>
+      </OptionsContainer>
 
-      {cartDropdownElement}
-    </div>
+      {cartDropdownMarkup}
+    </HeaderContainer>
   );
 };
 
