@@ -1,13 +1,6 @@
-import styled, { css } from 'styled-components';
+import styled from 'styled-components';
 import { Link } from 'react-router-dom';
 import { ReactComponent as Logo } from '../../assets/crown.svg';
-
-// We want these styles to apply to multiple element, therefore
-// css`` allows us to write re-usable CSS
-const OptionsContainerStyles = css`
-  padding: 10px 15px;
-  cursor: pointer;
-`;
 
 export const HeaderContainer = styled.div`
   height: 70px;
@@ -17,9 +10,6 @@ export const HeaderContainer = styled.div`
   margin-bottom: 25px;
 `;
 
-// we wrapped the component we want to extend with styles in the
-// styled constructor
-// https://styled-components.com/docs/basics#styling-any-component
 export const LogoContainer = styled(Link)`
   height: 100%;
   width: 70px;
@@ -36,11 +26,8 @@ export const OptionsContainer = styled.div`
 `;
 
 export const OptionLink = styled(Link)`
-  ${OptionsContainerStyles}
-`;
-
-export const OptionDiv = styled.div`
-  ${OptionsContainerStyles}
+  padding: 10px 15px;
+  cursor: pointer;
 `;
 
 export const SvgLogo = styled(Logo)`

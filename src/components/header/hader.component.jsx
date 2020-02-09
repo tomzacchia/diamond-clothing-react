@@ -15,7 +15,6 @@ import {
   LogoContainer,
   OptionsContainer,
   OptionLink,
-  OptionDiv,
   SvgLogo
 } from './header.styles';
 
@@ -26,7 +25,9 @@ const Header = ({ currentUser, displayCartDropdown }) => {
 
   if (currentUser) {
     signInAndOutMarkup = (
-      <OptionDiv onClick={() => auth.signOut()}>SIGN OUT</OptionDiv>
+      <OptionLink as="div" onClick={() => auth.signOut()}>
+        SIGN OUT
+      </OptionLink>
     );
   }
 
