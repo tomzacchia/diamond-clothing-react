@@ -44,6 +44,7 @@ class App extends React.Component {
   }
 
   updateCurrentUserInStore = userRef => {
+    // Subscribe to snapshot changes in DB
     userRef.onSnapshot(snapshot => {
       const { id } = snapshot;
       const snapshotData = snapshot.data();
