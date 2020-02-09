@@ -1,6 +1,7 @@
 /* eslint-disable react/button-has-type */
 import React from 'react';
-import './custom-button.styles.scss';
+
+import CustomButtonContainer from './custom-button.styles';
 
 const CustomButton = ({
   type,
@@ -9,16 +10,15 @@ const CustomButton = ({
   isGoogleSignIn,
   inverted
 }) => {
-  let buttonClassName = 'custom-button';
-
-  if (isGoogleSignIn) buttonClassName += ' google-sign-in';
-
-  if (inverted) buttonClassName += ' inverted';
-
   return (
-    <button className={buttonClassName} type={type} onClick={onClick}>
+    <CustomButtonContainer
+      type={type}
+      onClick={onClick}
+      isGoogleSignIn={isGoogleSignIn}
+      inverted={inverted}
+    >
       {children}
-    </button>
+    </CustomButtonContainer>
   );
 };
 
