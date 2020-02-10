@@ -23,5 +23,7 @@ export const selectCategoryById = categoryId => {
 };
 
 const findCollectionById = (categoryId, collections) => {
+  if (!collections) return null;
+
   return collections[categoryId];
 };
