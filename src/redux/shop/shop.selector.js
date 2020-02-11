@@ -22,6 +22,11 @@ export const selectCategoryById = categoryId => {
   );
 };
 
+export const selectIsCollectionFetching = createSelector(
+  selectShop,
+  shop => shop.isFetching
+);
+
 const findCollectionById = (categoryId, collections) => {
   if (!collections) return null;
 
