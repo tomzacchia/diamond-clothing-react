@@ -1,3 +1,4 @@
+/* eslint-disable react/jsx-curly-newline */
 /* eslint-disable react/jsx-props-no-spreading */
 import React from 'react';
 import './shop.styles.scss';
@@ -32,16 +33,14 @@ class ShopPage extends React.Component {
   );
 
   render() {
-    const { match, isCollectionLoaded } = this.props;
+    const { match, isFetching, isCollectionLoaded } = this.props;
 
     return (
       <div className="shop-page">
         <Route
           exact
           path={`${match.path}`}
-          render={props =>
-            this.renderCollectionsOveriew(!isCollectionLoaded, props)
-          }
+          render={props => this.renderCollectionsOveriew(isFetching, props)}
         />
 
         <Route
