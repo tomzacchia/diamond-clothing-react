@@ -27,6 +27,12 @@ export const selectIsCollectionFetching = createSelector(
   shop => shop.isFetching
 );
 
+export const selectIsCollectionsLoaded = createSelector(
+  selectShop,
+  // !!null = false
+  shop => !!shop.collections
+);
+
 const findCollectionById = (categoryId, collections) => {
   if (!collections) return null;
 

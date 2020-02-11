@@ -19,13 +19,6 @@ export const fetchCollectionsFailure = errorMessage => ({
   payload: errorMessage
 });
 
-/* 
-  Thunks are action creators that return a function that receives dispatch
-  as an argument. Thunks give us access to dispatch.
-    - Thunk is a function that returns a function that has access to dispatch
-    - When we call fetchCollectionsStartAsync it will first dispatch an
-    action and then make an async .get request 
-*/
 export const fetchCollectionsStartAsync = () => {
   return dispatch => {
     const collectionRef = firestore.collection('collections');
