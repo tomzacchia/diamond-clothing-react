@@ -31,19 +31,13 @@ class ShopPage extends React.Component {
     const { updateCollectionsAction } = this.props;
     const collectionRef = firestore.collection('collections');
 
-    collectionRef.onSnapshot(async snapshot => {
+    collectionRef.get().then(snapshot => {
       const collectionsMap = convertCollectionsSnapshotToMap(snapshot);
       updateCollectionsAction(collectionsMap);
       this.setState({ isLoading: false });
     });
   }
 
-  /*   
-    props = match, history & location
-    We use the HOC to render a spinner as data is being fetched
-    when data is stored to the State, the component we want to render
-    will render 
-  */
   renderCollectionsOveriew = (isLoading, props) => (
     <CollectionsOverviewWithSpinner isLoading={isLoading} {...props} />
   );
