@@ -1,12 +1,13 @@
 import { createStore, applyMiddleware, compose } from 'redux';
 
 import { persistStore } from 'redux-persist';
-import thunk from 'redux-thunk';
+import createSagaMiddleware from 'redux-saga';
 
 import rootReducer from './root-reducer';
 
-// optional: logger
-const middlewares = [thunk];
+const sagaMiddleware = createSagaMiddleware();
+
+const middlewares = [sagaMiddleware];
 
 // https://github.com/zalmoxisus/redux-devtools-extension/issues/320
 const composeEnhancers =
@@ -18,7 +19,8 @@ const enhancer = composeEnhancers(applyMiddleware(...middlewares));
 
 export const store = createStore(rootReducer, enhancer);
 
-// create persisted version of our store
+// sagaMiddleware.run()
+
 export const persistor = persistStore(store);
 
 export default { store, persistor };
