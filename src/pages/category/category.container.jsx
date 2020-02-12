@@ -7,7 +7,6 @@ import Spinner from '../../hoc/spinner.component';
 import categoryComponent from './category.component';
 
 const mapStateToProps = createStructuredSelector({
-  // this selector is still memoized, we want to ! the returned value
   isLoading: state => !selectIsCollectionsLoaded(state)
 });
 

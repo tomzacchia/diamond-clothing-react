@@ -13,6 +13,7 @@ const mapStateToProps = createStructuredSelector({
 
 // Compose evaludates rights to left.
 // CollectionsOverview -> Spinner -> connect(mapStateToProps)
+
 const CollectionsOverviewContainer = compose(
   connect(mapStateToProps),
   Spinner
