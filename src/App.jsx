@@ -9,7 +9,7 @@ import selectCurrentUser from './redux/user/user.selector';
 
 import HomePage from './pages/home-page/home-page.component';
 import ShopPage from './pages/shop-page/shop.component';
-import Header from './components/header/hader.component';
+import Header from './components/header/header.component';
 import Authentication from './pages/authentication/authentication.component';
 import Checkout from './pages/checkout/checkout.component';
 

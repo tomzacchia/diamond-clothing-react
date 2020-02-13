@@ -4,8 +4,10 @@ import { connect } from 'react-redux';
 
 import FormInput from '../form-input/form-input.component';
 import CustomButton from '../custom-button/custom-button.component';
-import { signInWithGoogle, auth } from '../../firebase/firebase.utils';
-import { googleSignInStart as googleSignInStartAction } from '../../redux/user/user.actions';
+import {
+  googleSignInStart as googleSignInStartAction,
+  emailSignInStart as emailSignInStartAction
+} from '../../redux/user/user.actions';
 
 class SignIn extends React.Component {
   constructor() {
@@ -19,26 +21,27 @@ class SignIn extends React.Component {
 
   handleSubmit = async event => {
     event.preventDefault();
+    const { emailSignInStart } = this.props;
     const { email, password } = this.state;
 
-    this.trySigningInUser(email, password);
+    emailSignInStart(email, password);
   };
 
-  reinitializeState = async () => {
-    const reinitializeState = { email: '', password: '' };
-    await this.setState(reinitializeState);
-  };
+  // reinitializeState = async () => {
+  //   const reinitializeState = { email: '', password: '' };
+  //   await this.setState(reinitializeState);
+  // };
 
-  trySigningInUser = async (email, password) => {
-    try {
-      // event caught by auth.onAuthStateChanged
-      await auth.signInWithEmailAndPassword(email, password);
+  // trySigningInUser = async (email, password) => {
+  //   try {
+  //     // event caught by auth.onAuthStateChanged
+  //     await auth.signInWithEmailAndPassword(email, password);
 
-      this.reinitializeState();
-    } catch (error) {
-      console.log(error);
-    }
-  };
+  //     this.reinitializeState();
+  //   } catch (error) {
+  //     console.log(error);
+  //   }
+  // };
 
   handleChange = event => {
     const { name, value } = event.target;
@@ -90,7 +93,9 @@ class SignIn extends React.Component {
 }
 
 const mapDispatchToProps = dispatch => ({
-  googleSignInStart: () => dispatch(googleSignInStartAction())
+  googleSignInStart: () => dispatch(googleSignInStartAction()),
+  emailSignInStart: (email, password) =>
+    dispatch(emailSignInStartAction({ email, password }))
 });
 
 export default connect(null, mapDispatchToProps)(SignIn);
