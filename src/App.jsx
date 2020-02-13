@@ -18,25 +18,20 @@ import Checkout from './pages/checkout/checkout.component';
 class App extends React.Component {
   unsubscribeFromAuth = null;
 
-  constructor(props) {
-    super(props);
-    const { setCurrentUser } = this.props;
-    this.setCurrentUser = setCurrentUser;
-  }
-
   componentDidMount() {
-    this.unsubscribeFromAuth = auth.onAuthStateChanged(
-      async authenticatedUser => {
-        if (!authenticatedUser) {
-          this.setCurrentUser(null);
-          return;
-        }
+    const { setCurrentUser } = this.props;
+    // this.unsubscribeFromAuth = auth.onAuthStateChanged(
+    //   async authenticatedUser => {
+    //     if (!authenticatedUser) {
+    //       this.setCurrentUser(null);
+    //       return;
+    //     }
 
-        const userRef = await createUserProfileDocument(authenticatedUser);
+    //     const userRef = await createUserProfileDocument(authenticatedUser);
 
-        this.updateCurrentUserInStore(userRef);
-      }
-    );
+    //     this.updateCurrentUserInStore(userRef);
+    //   }
+    // );
   }
 
   componentWillUnmount() {
