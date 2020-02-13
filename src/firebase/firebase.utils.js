@@ -14,8 +14,8 @@ const config = {
   measurementId: 'G-BXVWX31NN9'
 };
 
-// If the user is authenticated we'll return a reference to the document
-// else create a new user in our database
+// user is authenticate -> return userRef
+// else create new user
 export const createUserProfileDocument = async (
   authenticatedUser,
   additionalData
@@ -88,9 +88,9 @@ firebase.initializeApp(config);
 export const auth = firebase.auth();
 export const firestore = firebase.firestore();
 
-const provider = new firebase.auth.GoogleAuthProvider();
+export const googleProvider = new firebase.auth.GoogleAuthProvider();
 // use google auth pop up for O_Auth
-provider.setCustomParameters({ prompt: 'select_account' });
-export const signInWithGoogle = () => auth.signInWithPopup(provider);
+googleProvider.setCustomParameters({ prompt: 'select_account' });
+export const signInWithGoogle = () => auth.signInWithPopup(googleProvider);
 
 export default firebase;
