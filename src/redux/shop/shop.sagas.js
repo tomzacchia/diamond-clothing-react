@@ -26,7 +26,7 @@ export function* fetchCollectionAsync() {
   }
 }
 
-export function* fetchCollectionsStartSaga() {
+export function* fetchCollectionsSaga() {
   yield takeEvery(
     shopActionTypes.FETCH_COLLECTIONS_START,
     fetchCollectionAsync
