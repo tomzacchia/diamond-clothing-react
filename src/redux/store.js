@@ -2,25 +2,25 @@ import { createStore, applyMiddleware, compose } from 'redux';
 
 import { persistStore } from 'redux-persist';
 import createSagaMiddleware from 'redux-saga';
+import logger from 'redux-logger';
 
 import rootReducer from './root-reducer';
-import { fetchCollectionsStart } from './shop/shop.sagas';
+import rootSaga from './root-saga';
 
 const sagaMiddleware = createSagaMiddleware();
 
 const middlewares = [sagaMiddleware];
 
-// https://github.com/zalmoxisus/redux-devtools-extension/issues/320
 const composeEnhancers =
   typeof window === 'object' && window.__REDUX_DEVTOOLS_EXTENSION_COMPOSE__
     ? window.__REDUX_DEVTOOLS_EXTENSION_COMPOSE__({})
     : compose;
 
-const enhancer = composeEnhancers(applyMiddleware(...middlewares));
+const enhancer = composeEnhancers(applyMiddleware(...middlewares, logger));
 
 export const store = createStore(rootReducer, enhancer);
 
-sagaMiddleware.run(fetchCollectionsStart);
+sagaMiddleware.run(rootSaga);
 
 export const persistor = persistStore(store);
 
