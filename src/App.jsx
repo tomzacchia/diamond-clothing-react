@@ -6,6 +6,7 @@ import { connect } from 'react-redux';
 import { createStructuredSelector } from 'reselect';
 
 import selectCurrentUser from './redux/user/user.selector';
+import { verifyLoggedInUser as verifyLoggedInUserAction } from './redux/user/user.actions';
 
 import HomePage from './pages/home-page/home-page.component';
 import ShopPage from './pages/shop-page/shop.component';
@@ -14,38 +15,10 @@ import Authentication from './pages/authentication/authentication.component';
 import Checkout from './pages/checkout/checkout.component';
 
 class App extends React.Component {
-  unsubscribeFromAuth = null;
-
   componentDidMount() {
-    // const { setCurrentUser } = this.props;
-    // this.unsubscribeFromAuth = auth.onAuthStateChanged(
-    //   async authenticatedUser => {
-    //     if (!authenticatedUser) {
-    //       this.setCurrentUser(null);
-    //       return;
-    //     }
-    //     const userRef = await createUserProfileDocument(authenticatedUser);
-    //     this.updateCurrentUserInStore(userRef);
-    //   }
-    // );
+    const { verifyLoggedInUser } = this.props;
+    verifyLoggedInUser();
   }
-
-  componentWillUnmount() {
-    this.unsubscribeFromAuth();
-  }
-
-  updateCurrentUserInStore = userRef => {
-    // Subscribe to snapshot changes in DB
-    userRef.onSnapshot(snapshot => {
-      const { id } = snapshot;
-      const snapshotData = snapshot.data();
-
-      this.setCurrentUser({
-        id,
-        ...snapshotData
-      });
-    });
-  };
 
   render() {
     const redirectUser = () => {
@@ -75,4 +48,8 @@ const mapStateToProps = createStructuredSelector({
   currentUser: selectCurrentUser
 });
 
-export default connect(mapStateToProps)(App);
+const mapDispatchToProps = dispatch => ({
+  verifyLoggedInUser: () => dispatch(verifyLoggedInUserAction())
+});
+
+export default connect(mapStateToProps, mapDispatchToProps)(App);
