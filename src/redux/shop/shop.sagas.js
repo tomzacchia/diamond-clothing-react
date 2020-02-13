@@ -1,20 +1,32 @@
-import { takeEvery, takeLatest } from 'redux-saga/effects';
-import shopActionTypes from './shop.types';
+import { takeEvery, call, put } from 'redux-saga/effects';
 
-// All generator functions must yield
+import shopActionTypes from './shop.types';
+import {
+  firestore,
+  convertCollectionsSnapshotToMap
+} from '../../firebase/firebase.utils';
+import {
+  fetchCollectionSuccess,
+  fetchCollectionsFailure
+} from './shop.actions';
+
 export function* fetchCollectionAsync() {
-  yield console.log('I am fired');
+  try {
+    const collectionRef = firestore.collection('collections');
+    const snapshot = yield collectionRef.get();
+
+    const collectionsMap = yield call(
+      convertCollectionsSnapshotToMap,
+      snapshot
+    );
+
+    yield put(fetchCollectionSuccess(collectionsMap));
+  } catch (error) {
+    yield put(fetchCollectionsFailure(error.message));
+  }
 }
 
-/*
-  Sagas allow for multiple functions each listening for their respective
-  action types to execute without blocking code. takeEvery creates a non
-  blocking call for asynchronous tasks. Sagas is also able to cancel
-  tasks that it places in the background. When we yield our saga
-  middleware takes over control of these tasks, i.e which to cancel.
-*/
 export function* fetchCollectionsStart() {
-  // (actionType, function that runs in response to actionType)
   yield takeEvery(
     shopActionTypes.FETCH_COLLECTIONS_START,
     fetchCollectionAsync
