@@ -66,6 +66,7 @@ export const convertCollectionsSnapshotToMap = collections => {
   return transformedCollectionMap;
 };
 
+// Only for uploading data to DB
 export const addCollectionAndDocuments = async (
   collectionKey,
   objectsToAdd
