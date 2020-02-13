@@ -66,6 +66,16 @@ export const convertCollectionsSnapshotToMap = collections => {
   return transformedCollectionMap;
 };
 
+export const getCurrentUser = () => {
+  return new Promise((resolve, reject) => {
+    const unsubscribe = auth.onAuthStateChanged(authenticatedUser => {
+      // resolve with NULL if user d.n.e
+      resolve(authenticatedUser);
+      unsubscribe();
+    }, reject);
+  });
+};
+
 // Only for uploading data to DB
 export const addCollectionAndDocuments = async (
   collectionKey,
