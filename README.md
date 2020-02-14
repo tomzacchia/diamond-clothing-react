@@ -10,12 +10,25 @@ In addition this application is based off of the project described in [Complete 
 
 # Dependancies
 ____
+- [Styled Components](https://www.npmjs.com/package/styled-components)
+- [Reselect](https://www.npmjs.com/package/reselect)
+- [Firebase](https://www.npmjs.com/package/firebase)
+- [React Stripe Checkout](https://www.npmjs.com/package/react-stripe-checkout)
+- [Redux Persist](https://www.npmjs.com/package/redux-persist)
+- [Redux Saga](https://www.npmjs.com/package/redux-saga)
 
 # Favorite Lessons Learned
+Links re-direct to examples in wiki
 ____
+- [Container Pattern]()
+- [Saga vs Thunk]()
+- [Styled Components]()
 
 # To-Dos 🤯
 ____
-
-# Component Descriptions
-____
+- Add form validation (i.e highlighting input fields if there is an error)
+- Add feedback if there are errors (i.e if an API request fails)
+- Write tests (A lot of tests 🤕)
+- Explore and implement optimizations such as lazy loading components
+- Explore and implement React Hooks
+- Write cleaner code 🧐
