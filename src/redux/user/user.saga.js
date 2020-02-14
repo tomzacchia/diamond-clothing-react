@@ -69,6 +69,10 @@ export function* signOut() {
   }
 }
 
+export function* signUpUser(args) {
+  console.log(args);
+}
+
 export function* googleSignInSaga() {
   yield takeLatest(userActionsTypes.GOOGLE_SIGN_IN_START, signInWithGoogle);
 }
@@ -85,11 +89,16 @@ export function* signOutSaga() {
   yield takeLatest(userActionsTypes.SIGN_OUT_START, signOut);
 }
 
+export function* signUpSaga() {
+  yield takeLatest(userActionsTypes.SIGN_UP_START, signUpUser);
+}
+
 export function* userSagas() {
   yield all([
     call(googleSignInSaga),
     call(signInWithEmailSaga),
     call(verifyLoggedInUserSaga),
-    call(signOutSaga)
+    call(signOutSaga),
+    call(signUpSaga)
   ]);
 }
