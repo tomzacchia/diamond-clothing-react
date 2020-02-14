@@ -9,7 +9,11 @@ export const selectCollections = createSelector(
 
 export const selectCollectionsAsArray = createSelector(
   selectCollections,
-  collections => Object.keys(collections).map(key => collections[key])
+  collections => {
+    if (!collections) return [];
+
+    return Object.keys(collections).map(key => collections[key]);
+  }
 );
 
 export const selectCategoryById = categoryId => {
@@ -18,6 +22,19 @@ export const selectCategoryById = categoryId => {
   );
 };
 
+export const selectIsCollectionFetching = createSelector(
+  selectShop,
+  shop => shop.isFetching
+);
+
+export const selectIsCollectionsLoaded = createSelector(
+  selectShop,
+  // !!null = false
+  shop => !!shop.collections
+);
+
 const findCollectionById = (categoryId, collections) => {
+  if (!collections) return null;
+
   return collections[categoryId];
 };

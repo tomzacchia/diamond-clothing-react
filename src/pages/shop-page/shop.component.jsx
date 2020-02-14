@@ -1,18 +1,42 @@
+/* eslint-disable react/jsx-curly-newline */
+/* eslint-disable react/jsx-props-no-spreading */
 import React from 'react';
 import './shop.styles.scss';
 import { Route } from 'react-router-dom';
+import { connect } from 'react-redux';
 
-import CollectionsOverview from '../../components/collections-overview/collections-overview.component';
-import CategoryPage from '../category/category.component';
+import { fetchCollectionsStart } from '../../redux/shop/shop.actions';
+import CollectionsOverviewContainer from '../../components/collections-overview/collections-overview.container';
+import CategroyContainer from '../category/category.container';
 
-const ShopPage = ({ match }) => {
-  return (
-    <div className="shop-page">
-      <Route exact path={`${match.path}`} component={CollectionsOverview} />
+class ShopPage extends React.Component {
+  componentDidMount() {
+    const { fetchCollectionsAsync } = this.props;
+    fetchCollectionsAsync();
+  }
 
-      <Route path={`${match.path}/:categoryId`} component={CategoryPage} />
-    </div>
-  );
-};
+  render() {
+    const { match } = this.props;
 
-export default ShopPage;
+    return (
+      <div className="shop-page">
+        <Route
+          exact
+          path={`${match.path}`}
+          component={CollectionsOverviewContainer}
+        />
+
+        <Route
+          path={`${match.path}/:categoryId`}
+          component={CategroyContainer}
+        />
+      </div>
+    );
+  }
+}
+
+const mapDispatchToProps = dispatch => ({
+  fetchCollectionsAsync: () => dispatch(fetchCollectionsStart())
+});
+
+export default connect(null, mapDispatchToProps)(ShopPage);

@@ -28,7 +28,7 @@ export const CollectionItem = styled.div`
       opacity: 0.8;
     }
 
-    ${ModifiedCustomButton} {
+    ${CustomButtonContainer} {
       opacity: 0.85;
       display: flex;
     }
