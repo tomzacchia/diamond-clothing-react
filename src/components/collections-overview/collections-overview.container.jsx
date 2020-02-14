@@ -7,18 +7,12 @@ import CollectionsOverview from './collections-overview.component';
 import Spinner from '../../hoc/spinner.component';
 
 const mapStateToProps = createStructuredSelector({
-  // isLoading is what Spinner is expecting
   isLoading: selectIsCollectionFetching
 });
-
-// Compose evaludates rights to left.
-// CollectionsOverview -> Spinner -> connect(mapStateToProps)
 
 const CollectionsOverviewContainer = compose(
   connect(mapStateToProps),
   Spinner
 )(CollectionsOverview);
-
-// connect(mapStateToProps)(Spinner(CollectionsOverview))
 
 export default CollectionsOverviewContainer;
