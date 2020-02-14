@@ -69,8 +69,15 @@ export function* signOut() {
   }
 }
 
-export function* signUpUser(args) {
-  console.log(args);
+export function* signUpUser({ payload }) {
+  try {
+    const { email, password } = payload;
+
+    const { user } = yield auth.createUserWithEmailAndPassword(email, password);
+    // yield getUserSnapshot(user);
+  } catch (error) {
+    yield put();
+  }
 }
 
 export function* googleSignInSaga() {

@@ -31,7 +31,7 @@ class SignUp extends React.Component {
       return null;
     }
 
-    signUpStart({ email, password });
+    signUpStart(email, password);
 
     // try {
     //   const { user } = await auth.createUserWithEmailAndPassword(
@@ -108,7 +108,8 @@ class SignUp extends React.Component {
 }
 
 const mapDispatchToProps = dispatch => ({
-  signUpStart: () => dispatch(signUpStartAction())
+  signUpStart: (email, password) =>
+    dispatch(signUpStartAction({ email, password }))
 });
 
 export default connect(null, mapDispatchToProps)(SignUp);
