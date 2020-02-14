@@ -20,9 +20,9 @@ ____
 # Favorite Lessons Learned
 Links re-direct to examples in wiki
 ____
-- [Container Pattern]()
-- [Saga vs Thunk]()
-- [Styled Components]()
+- [Container Pattern](https://github.com/tomzacchia/ecommerce-project/wiki/Container-Pattern-example)
+- [Styled Components](https://github.com/tomzacchia/ecommerce-project/wiki/Styled-Components-example)
+- Sagas vs Thunk (to be added...)
 
 # To-Dos 🤯
 ____
