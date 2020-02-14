@@ -5,7 +5,6 @@ import { connect } from 'react-redux';
 import FormInput from '../form-input/form-input.component';
 import CustomButton from '../custom-button/custom-button.component';
 
-import { auth, createUserProfileDocument } from '../../firebase/firebase.utils';
 import { signUpStart as signUpStartAction } from '../../redux/user/user.actions';
 
 class SignUp extends React.Component {
@@ -30,8 +29,8 @@ class SignUp extends React.Component {
       alert('passwords do not match');
       return null;
     }
-
-    signUpStart(email, password);
+    const newUserCredetials = { email, password, displayName };
+    signUpStart(newUserCredetials);
   };
 
   handleChange = event => {
@@ -90,8 +89,8 @@ class SignUp extends React.Component {
 }
 
 const mapDispatchToProps = dispatch => ({
-  signUpStart: (email, password) =>
-    dispatch(signUpStartAction({ email, password }))
+  signUpStart: newUserCredetials =>
+    dispatch(signUpStartAction(newUserCredetials))
 });
 
 export default connect(null, mapDispatchToProps)(SignUp);
