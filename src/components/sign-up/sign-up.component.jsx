@@ -13,10 +13,10 @@ class SignUp extends React.Component {
     super();
 
     this.state = {
-      displayName: 'test',
-      email: 'test2@test.com',
-      password: '123456',
-      confirmPassword: '123456'
+      displayName: '',
+      email: '',
+      password: '',
+      confirmPassword: ''
     };
   }
 
@@ -32,24 +32,6 @@ class SignUp extends React.Component {
     }
 
     signUpStart(email, password);
-
-    // try {
-    //   const { user } = await auth.createUserWithEmailAndPassword(
-    //     email,
-    //     password
-    //   );
-
-    //   await createUserProfileDocument(user, { displayName });
-
-    //   this.setState = this.setState({
-    //     displayName: '',
-    //     email: '',
-    //     password: '',
-    //     confirmPassword: ''
-    //   });
-    // } catch (error) {
-    //   console.log(error);
-    // }
   };
 
   handleChange = event => {
