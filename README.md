@@ -1,6 +1,6 @@
 # React E-Commerce example app
 
-A simple e-commerce website boostrapped with [React Create App](https://github.com/facebook/create-react-app) that I built to learn and practice React and in general best practices. 
+A simple e-commerce website boostrapped with [React Create App](https://github.com/facebook/create-react-app) that I built to learn and practice React and in general best practices. It is still a work in progress.
 
 ![App Screnshot](https://github.com/tomzacchia/ecommerce-project/blob/master/documentation_images/app_screenshot.png)
 
