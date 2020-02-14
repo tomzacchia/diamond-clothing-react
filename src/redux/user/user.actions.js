@@ -40,3 +40,8 @@ export const signUpStart = emailAndPassword => ({
   type: userActionsTypes.SIGN_UP_START,
   payload: emailAndPassword
 });
+
+export const signUpFail = error => ({
+  type: userActionsTypes.SIGN_UP_FAIL,
+  payload: error
+});
