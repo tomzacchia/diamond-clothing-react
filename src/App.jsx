@@ -1,9 +1,10 @@
 import React from 'react';
 import './App.styles.scss';
 
-import { Route, Switch, Redirect } from 'react-router-dom';
+import { Route, Switch, Redirect, withRouter } from 'react-router-dom';
 import { connect } from 'react-redux';
 import { createStructuredSelector } from 'reselect';
+import { compose } from 'redux';
 
 import selectCurrentUser from './redux/user/user.selector';
 import { verifyLoggedInUser as verifyLoggedInUserAction } from './redux/user/user.actions';
@@ -18,6 +19,13 @@ class App extends React.Component {
   componentDidMount() {
     const { verifyLoggedInUser } = this.props;
     verifyLoggedInUser();
+  }
+
+  componentDidUpdate(prevProps) {
+    const { location: newLocation } = this.props;
+    if (newLocation !== prevProps.location) {
+      window.scrollTo(0, 0);
+    }
   }
 
   render() {
@@ -52,4 +60,9 @@ const mapDispatchToProps = dispatch => ({
   verifyLoggedInUser: () => dispatch(verifyLoggedInUserAction())
 });
 
-export default connect(mapStateToProps, mapDispatchToProps)(App);
+const AppWithRouter = compose(
+  withRouter,
+  connect(mapStateToProps, mapDispatchToProps)
+);
+
+export default AppWithRouter(App);

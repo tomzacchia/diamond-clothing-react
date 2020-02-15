@@ -15,13 +15,6 @@ class ShopPage extends React.Component {
     fetchCollectionsAsync();
   }
 
-  componentDidUpdate(prevProps) {
-    const { location: newLocation } = this.props;
-    if (newLocation !== prevProps.location) {
-      window.scrollTo(0, 0);
-    }
-  }
-
   render() {
     const { match } = this.props;
 
