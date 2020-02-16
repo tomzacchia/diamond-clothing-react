@@ -1,9 +1,10 @@
-import React from 'react';
+import React, { useEffect } from 'react';
 import './App.styles.scss';
 
-import { Route, Switch, Redirect } from 'react-router-dom';
+import { Route, Switch, Redirect, withRouter } from 'react-router-dom';
 import { connect } from 'react-redux';
 import { createStructuredSelector } from 'reselect';
+import { compose } from 'redux';
 
 import selectCurrentUser from './redux/user/user.selector';
 import { verifyLoggedInUser as verifyLoggedInUserAction } from './redux/user/user.actions';
@@ -14,35 +15,35 @@ import Header from './components/header/header.component';
 import Authentication from './pages/authentication/authentication.component';
 import Checkout from './pages/checkout/checkout.component';
 
-class App extends React.Component {
-  componentDidMount() {
-    const { verifyLoggedInUser } = this.props;
+const App = ({ verifyLoggedInUser, currentUser, location: newLocation }) => {
+  // we pass our dispatchedAction so this action only fires once
+  useEffect(() => {
     verifyLoggedInUser();
-  }
+  }, [verifyLoggedInUser]);
 
-  render() {
-    const redirectUser = () => {
-      const { currentUser } = this.props;
+  useEffect(() => {
+    window.scrollTo(0, 0);
+  }, [newLocation]);
 
-      if (currentUser) {
-        return <Redirect to="/" />;
-      }
-      return <Authentication />;
-    };
+  const redirectUser = () => {
+    if (currentUser) {
+      return <Redirect to="/" />;
+    }
+    return <Authentication />;
+  };
 
-    return (
-      <div>
-        <Header />
-        <Switch>
-          <Route exact path="/" component={HomePage} />
-          <Route path="/shop" component={ShopPage} />
-          <Route exact path="/authentication" render={redirectUser} />
-          <Route exact patch="/checkout" component={Checkout} />
-        </Switch>
-      </div>
-    );
-  }
-}
+  return (
+    <div>
+      <Header />
+      <Switch>
+        <Route exact path="/" component={HomePage} />
+        <Route path="/shop" component={ShopPage} />
+        <Route exact path="/authentication" render={redirectUser} />
+        <Route exact patch="/checkout" component={Checkout} />
+      </Switch>
+    </div>
+  );
+};
 
 const mapStateToProps = createStructuredSelector({
   currentUser: selectCurrentUser
@@ -52,4 +53,9 @@ const mapDispatchToProps = dispatch => ({
   verifyLoggedInUser: () => dispatch(verifyLoggedInUserAction())
 });
 
-export default connect(mapStateToProps, mapDispatchToProps)(App);
+const AppWithRouter = compose(
+  withRouter,
+  connect(mapStateToProps, mapDispatchToProps)
+);
+
+export default AppWithRouter(App);
