@@ -7,9 +7,11 @@ const StripeButton = ({ price }) => {
   const priceInCents = price * 100;
   const publishableKey = 'pk_test_IgHcCCXI9FJiB2cICt37UChx';
 
+  const URL = process.env.REACT_APP_API_URL;
+
   const onToken = token => {
     axios({
-      url: 'http://localhost:5000/payment',
+      url: `${URL}/payment`,
       method: 'post',
       data: {
         amount: priceInCents,
