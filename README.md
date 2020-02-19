@@ -19,12 +19,14 @@ ____
 - [React Stripe Checkout](https://www.npmjs.com/package/react-stripe-checkout)
 - [Redux Persist](https://www.npmjs.com/package/redux-persist)
 - [Redux Saga](https://www.npmjs.com/package/redux-saga)
+- [React Hooks](https://github.com/facebook/react)
 
 # Favorite Lessons Learned
 Links re-direct to examples in wiki
 ____
 - [Container Pattern](https://github.com/tomzacchia/ecommerce-project/wiki/Container-Pattern-example)
 - [Styled Components](https://github.com/tomzacchia/ecommerce-project/wiki/Styled-Components-example)
+- [React Hooks](https://github.com/tomzacchia/ecommerce-project/wiki/React-Hooks)
 - Sagas vs Thunk (to be added...)
 
 # To-Dos 🤯
