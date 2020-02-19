@@ -5,14 +5,18 @@ A simple e-commerce website boostrapped with [React Create App](https://github.c
 ![App Screnshot](https://github.com/tomzacchia/ecommerce-project/blob/master/documentation_images/app_screenshot.png)
 
 ### [Demo](https://react-diamond-clothing.herokuapp.com/)
+
 Credentials for testing sign-in features:
+
 - username: fancy_user@test.com
 - password: fancypants
 
-In addition this application is based off of the project described in [Complete React Developer in 2020 (w/ Redux, Hooks, GraphQL)](https://www.udemy.com/course/complete-react-developer-zero-to-mastery/?referralCode=1F1DDE581D3E4605A1AF) created by [Andrei Neagoie](https://github.com/aneagoie) and [Yihua Zhang](https://github.com/ZhangMYihua). 
+In addition this application is based off of the project described in [Complete React Developer in 2020 (w/ Redux, Hooks, GraphQL)](https://www.udemy.com/course/complete-react-developer-zero-to-mastery/?referralCode=1F1DDE581D3E4605A1AF) created by [Andrei Neagoie](https://github.com/aneagoie) and [Yihua Zhang](https://github.com/ZhangMYihua).
 
 # Dependancies
-____
+
+---
+
 - [Styled Components](https://www.npmjs.com/package/styled-components)
 - [Reselect](https://www.npmjs.com/package/reselect)
 - [Firebase](https://www.npmjs.com/package/firebase)
@@ -22,15 +26,20 @@ ____
 - [React Hooks](https://github.com/facebook/react)
 
 # Favorite Lessons Learned
+
 Links re-direct to examples in wiki
-____
+
+---
+
 - [Container Pattern](https://github.com/tomzacchia/ecommerce-project/wiki/Container-Pattern-example)
 - [Styled Components](https://github.com/tomzacchia/ecommerce-project/wiki/Styled-Components-example)
 - [React Hooks](https://github.com/tomzacchia/ecommerce-project/wiki/React-Hooks)
 - Sagas vs Thunk (to be added...)
 
 # To-Dos 🤯
-____
+
+---
+
 - Add form validation (i.e highlighting input fields if there is an error)
 - Add feedback if there are errors (i.e if an API request fails)
 - Write tests (A lot of tests 🤕)
