@@ -1,6 +1,6 @@
 import React from 'react';
 import { withRouter } from 'react-router-dom';
-import './menu-item.styles.scss';
+import * as S from './menu-item.styles';
 
 const MenuItem = ({ history, match, remainingMenuItemProps }) => {
   const { title, imageUrl, size, linkUrl } = remainingMenuItemProps;
@@ -16,16 +16,16 @@ const MenuItem = ({ history, match, remainingMenuItemProps }) => {
   };
 
   return (
-    <div className={menuItemClass} onClick={navigateToHandler}>
-      <div
+    <S.MenuItemContainer onClick={navigateToHandler}>
+      <S.BackgroundImageContainer
         style={{ backgroundImage: `url(${imageUrl})` }}
         className="background-image"
       />
-      <div className="content-container">
-        <h1 className="title">{title.toUpperCase()}</h1>
-        <span className="subtitle">SHOP NOW</span>
-      </div>
-    </div>
+      <S.ContentContainer className="content-container">
+        <S.ContentTitle className="title">{title.toUpperCase()}</S.ContentTitle>
+        <S.ContentSubtitle className="subtitle">SHOP NOW</S.ContentSubtitle>
+      </S.ContentContainer>
+    </S.MenuItemContainer>
   );
 };
 
