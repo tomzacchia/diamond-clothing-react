@@ -7,7 +7,8 @@ const StripeButton = ({ price }) => {
   const priceInCents = price * 100;
   const publishableKey = 'pk_test_IgHcCCXI9FJiB2cICt37UChx';
 
-  const URL = process.env.REACT_APP_API_URL;
+  // const URL = process.env.REACT_APP_API_URL;
+  const URL = 'https://diamond-clothin-api.herokuapp.com';
 
   const onToken = token => {
     axios({
