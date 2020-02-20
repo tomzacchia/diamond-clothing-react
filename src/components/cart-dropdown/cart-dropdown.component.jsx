@@ -1,5 +1,6 @@
 import React from 'react';
-import './cart-dropdown.styles.scss';
+import * as S from './cart-dropdown.styles';
+
 import { connect } from 'react-redux';
 import { createStructuredSelector } from 'reselect';
 import { withRouter } from 'react-router-dom';
@@ -11,7 +12,7 @@ import { toggleCartDropdown } from '../../redux/cart/cart.actions';
 
 const CartDropdown = ({ cartItems, history, dispatch }) => {
   let cartItemElements = (
-    <span className="empty-message"> Your cart is empty</span>
+    <S.EmptyMessageContainer> Your cart is empty</S.EmptyMessageContainer>
   );
 
   if (cartItems.length > 0) {
@@ -26,11 +27,11 @@ const CartDropdown = ({ cartItems, history, dispatch }) => {
   };
 
   return (
-    <div className="cart-dropdown">
-      <div className="cart-items">{cartItemElements}</div>
+    <S.CartDropdownContainer>
+      <S.CartItemsContainer>{cartItemElements}</S.CartItemsContainer>
 
       <CustomButton onClick={handleCheckoutClick}>GO TO CHECKOUT</CustomButton>
-    </div>
+    </S.CartDropdownContainer>
   );
 };
 

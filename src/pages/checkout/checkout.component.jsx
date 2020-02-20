@@ -1,6 +1,6 @@
 /* eslint-disable react/jsx-one-expression-per-line */
 import React from 'react';
-import './checkout.styles.scss';
+import * as S from './checkout.styles';
 
 import { connect } from 'react-redux';
 import { createStructuredSelector } from 'reselect';
@@ -17,37 +17,37 @@ const Checkout = ({ cartItems, cartTotalCost }) => {
   const checkoutItemsMarkup = createCheckoutItemsMarkup(cartItems);
 
   return (
-    <div className="checkout-page">
-      <div className="checkout-header">
-        <div className="header-block">
+    <S.CheckoutPageContainer>
+      <S.CheckoutHeaderContainer>
+        <S.HeaderBlockContainer>
           <span>Product</span>
-        </div>
-        <div className="header-block">
+        </S.HeaderBlockContainer>
+        <S.HeaderBlockContainer>
           <span>Description</span>
-        </div>
-        <div className="header-block">
+        </S.HeaderBlockContainer>
+        <S.HeaderBlockContainer>
           <span>Quantity</span>
-        </div>
-        <div className="header-block">
+        </S.HeaderBlockContainer>
+        <S.HeaderBlockContainer>
           <span>Price</span>
-        </div>
-        <div className="header-block">
+        </S.HeaderBlockContainer>
+        <S.HeaderBlockContainer>
           <span>Remove</span>
-        </div>
-      </div>
+        </S.HeaderBlockContainer>
+      </S.CheckoutHeaderContainer>
 
       {checkoutItemsMarkup}
 
-      <div className="total">Total:${cartTotalCost}</div>
+      <S.TotalContainer>Total:${cartTotalCost}</S.TotalContainer>
 
-      <div className="test-warning">
+      <S.WarningContainer>
         *Please use the following test credit card for payments*
         <br />
         4242 4242 4242 4242 - Exp: 06/20 - CVV: 123
-      </div>
+      </S.WarningContainer>
 
       <StripeButton price={cartTotalCost} />
-    </div>
+    </S.CheckoutPageContainer>
   );
 };
 

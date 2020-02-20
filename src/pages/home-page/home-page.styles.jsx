@@ -4,7 +4,11 @@ const HomePageContainer = styled.div`
   display: flex;
   flex-direction: column;
   align-items: center;
-  padding: 20px 80px;
+  padding: 20px 30px;
+
+  ${ ({ theme }) => theme.md`
+    padding: 20px 80px;
+  `}
 `;
 
 export default HomePageContainer;
