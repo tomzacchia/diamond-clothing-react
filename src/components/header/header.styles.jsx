@@ -9,6 +9,7 @@ export const HeaderContainer = styled.div`
   width: 100%;
   display: flex;
   justify-content: space-between;
+
   ${({ theme }) => theme.md`
     padding: 0; 
     margin-bottom: 25px;
@@ -19,6 +20,7 @@ export const HeaderContainer = styled.div`
 export const LogoContainer = styled(Link)`
   width: 50px;
   padding: 0;
+
   ${({ theme }) => theme.md`
     height: 100%;
     width: 70px;
@@ -33,6 +35,7 @@ export const OptionsContainer = styled.div`
   align-items: center;
   justify-content: flex-end;
   cursor: pointer;
+
   ${({ theme }) => theme.md`
     width: 50%;
   `};
@@ -46,6 +49,7 @@ export const OptionLink = styled(Link)`
 export const SvgLogo = styled(Logo)`
   width: 35px;
   height: 35px;
+
   ${({ theme }) => theme.md`
     width: 50px;
     height: 50px;
