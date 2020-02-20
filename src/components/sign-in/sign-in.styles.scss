@@ -1,5 +1,5 @@
 .sign-in {
-  width: 380px;
+  width: 350px;
   display: flex;
   flex-direction: column;
 
@@ -11,4 +11,8 @@
 .sign-in .button-container {
   display: flex;
   justify-content: space-between;
+
+  button {
+    width: 160px;
+  }
 }
