@@ -1,6 +1,6 @@
 /* eslint-disable jsx-a11y/no-noninteractive-element-interactions */
 import React from 'react';
-import './collection-preview.styles.scss';
+import * as S from './collection-preview.styles';
 
 import CollectionItem from '../collection-item/collecton-item.component';
 
@@ -17,12 +17,12 @@ const CollectionPreview = ({ title, previewItems, currentUrl, history }) => {
   };
 
   return (
-    <div className="preview-container">
-      <h1 className="preview-title" onClick={handleOnClick}>
+    <S.CollectionPreviewContainer>
+      <S.TitleContainer onClick={handleOnClick}>
         {title.toUpperCase()}
-      </h1>
-      <div className="preview">{fitleredPreviewItemsElements}</div>
-    </div>
+      </S.TitleContainer>
+      <S.PreviewContainer>{fitleredPreviewItemsElements}</S.PreviewContainer>
+    </S.CollectionPreviewContainer>
   );
 };
 
