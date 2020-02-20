@@ -1,4 +1,4 @@
-import styled, { css } from "styled-components";
+import styled from "styled-components";
 
 export const MenuItemContainer = styled.div`
   margin: 0 7.5px 15px;
