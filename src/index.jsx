@@ -8,13 +8,16 @@ import './index.css';
 import App from './App';
 import * as serviceWorker from './serviceWorker';
 import { store, persistor } from './redux/store';
+import MediaQueriesTheme from './hoc/media-queries/media-queries.component';
 
 // eslint-disable-next-line no-undef
 ReactDOM.render(
   <Provider store={store}>
     <BrowserRouter>
       <PersistGate persistor={persistor}>
-        <App />
+        <MediaQueriesTheme>
+          <App />
+        </MediaQueriesTheme>
       </PersistGate>
     </BrowserRouter>
   </Provider>,

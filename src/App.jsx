@@ -1,10 +1,10 @@
 import React, { useEffect } from 'react';
-import './App.styles.scss';
-
 import { Route, Switch, Redirect, withRouter } from 'react-router-dom';
 import { connect } from 'react-redux';
 import { createStructuredSelector } from 'reselect';
 import { compose } from 'redux';
+
+import GlobalStyle from './global.styles';
 
 import selectCurrentUser from './redux/user/user.selector';
 import { verifyLoggedInUser as verifyLoggedInUserAction } from './redux/user/user.actions';
@@ -33,6 +33,7 @@ const App = ({ verifyLoggedInUser, currentUser, location: newLocation }) => {
 
   return (
     <div>
+      <GlobalStyle />
       <Header />
       <Switch>
         <Route exact path="/" component={HomePage} />
