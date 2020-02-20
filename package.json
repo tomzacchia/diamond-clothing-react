@@ -1,6 +1,6 @@
 {
   "name": "ecommerce-project",
-  "homepage": "http://tomzacchia.github.io/ecommerce-project",
+  "homepage": "https://react-diamond-clothing.herokuapp.com/",
   "version": "0.1.0",
   "proxy": "http://localhost:5000",
   "private": true,
