@@ -16,7 +16,6 @@ import Authentication from './pages/authentication/authentication.component';
 import Checkout from './pages/checkout/checkout.component';
 
 const App = ({ verifyLoggedInUser, currentUser, location: newLocation }) => {
-  // we pass our dispatchedAction so this action only fires once
   useEffect(() => {
     verifyLoggedInUser();
   }, [verifyLoggedInUser]);
