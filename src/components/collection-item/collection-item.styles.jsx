@@ -9,14 +9,23 @@ export const CollectionItemImage = styled.div`
 `;
 
 export const CustomButtonContainer = styled.div`
-  opacity: 0.7;
-  position: absolute;
-  top: 255px;
-  display: none;
+  margin-top: 1rem;
+  padding: 0;
+  width: 100%;  
+  opacity: 0.9;  
+  display: block;
+
+  ${({ theme }) => theme.md`
+    width: 80%;
+    opacity: 0.7;
+    position: absolute;
+    top: 255px;
+    display: none;
+  `}
 `;
 
 export const CollectionItem = styled.div`
-  width: 22vw;
+  width: 40vw;
   display: flex;
   flex-direction: column;
   height: 350px;
@@ -25,14 +34,28 @@ export const CollectionItem = styled.div`
 
   &:hover {
     ${CollectionItemImage} {
-      opacity: 0.8;
+      opacity: unset;
     }
 
     ${CustomButtonContainer} {
-      opacity: 0.85;
-      display: flex;
+      opacity: unset;
     }
   }
+
+  ${({ theme }) => theme.md`
+    width: 22vw;
+    
+    &:hover {
+      ${CollectionItemImage} {
+        opacity: 0.8;
+      }
+
+      ${CustomButtonContainer} {
+        opacity: 0.85;
+        display: flex;
+      }
+    }
+  `}
 `;
 
 export const CollectionItemFooter = styled.div`

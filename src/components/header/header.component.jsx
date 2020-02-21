@@ -45,7 +45,7 @@ const Header = ({ currentUser, displayCartDropdown, signOutUser }) => {
       <OptionsContainer>
         <OptionLink to="/shop">SHOP</OptionLink>
 
-        <OptionLink to="/contact">CONTACT</OptionLink>
+        {/* <OptionLink to="/contact">CONTACT</OptionLink> */}
 
         {signInAndOutMarkup}
 

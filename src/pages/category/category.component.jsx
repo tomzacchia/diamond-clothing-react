@@ -1,5 +1,5 @@
 import React from 'react';
-import './category.styles.scss';
+import * as S from './category.styles';
 import { connect } from 'react-redux';
 import { selectCategoryById } from '../../redux/shop/shop.selector';
 
@@ -13,10 +13,10 @@ const CategoryPage = ({ categoryItems }) => {
   });
 
   return (
-    <div className="category-page">
-      <h2 className="title">{title}</h2>
-      <div className="items">{categoryItemsMarkup}</div>
-    </div>
+    <S.CategoryPageContainer>
+      <S.CollectionTitle>{title}</S.CollectionTitle>
+      <S.ItemsContainer>{categoryItemsMarkup}</S.ItemsContainer>
+    </S.CategoryPageContainer>
   );
 };
 
