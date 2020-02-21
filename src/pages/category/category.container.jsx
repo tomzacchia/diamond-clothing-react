@@ -3,7 +3,7 @@ import { compose } from 'redux';
 import { connect } from 'react-redux';
 
 import { selectIsCollectionsLoaded } from '../../redux/shop/shop.selector';
-import Spinner from '../../hoc/spinner/spinner.component';
+import Spinner from '../../hoc/with-spinner/with-spinner.component';
 import categoryComponent from './category.component';
 
 const mapStateToProps = createStructuredSelector({
