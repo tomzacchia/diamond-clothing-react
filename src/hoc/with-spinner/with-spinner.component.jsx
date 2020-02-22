@@ -1,14 +1,12 @@
 /* eslint-disable react/jsx-props-no-spreading */
 import React from 'react';
-import * as S from './spinner.styles';
+import Spinner from '../../components/spinner/spinner.component';
 
-const Spinner = WrappedComponent => {
+const WithSpinner = WrappedComponent => {
   return ({ isLoading, ...otherProps }) => {
     if (isLoading) {
       return (
-        <S.SpinnerOverlay>
-          <S.SpinnerContainer />
-        </S.SpinnerOverlay>
+        <Spinner />
       );
     }
 
@@ -16,4 +14,4 @@ const Spinner = WrappedComponent => {
   };
 };
 
-export default Spinner;
+export default WithSpinner;
